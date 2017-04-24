@@ -1,9 +1,13 @@
+# Change the registry to use the busy cursor
+
 $RegConnect = [Microsoft.Win32.RegistryKey]::OpenRemoteBaseKey([Microsoft.Win32.RegistryHive]"CurrentUser","$env:COMPUTERNAME")
 $RegCursors = $RegConnect.OpenSubKey("Control Panel\Cursors",$true)
 $RegCursors.SetValue("Arrow","C:\Windows\cursors\aero_busy.ani")
 $RegCursors.Close()
-
 $RegConnect.Close()
+
+
+# Now refresh the cursor using some windows API call
 
 $CSharpSig = @'
 
